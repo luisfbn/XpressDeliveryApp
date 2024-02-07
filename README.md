@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+# Problem
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Each package in Xpress has a distance to where it will be carried:
+Each shipment is the result of the relationship between a courier and a package.
 
-## Available Scripts
+**Requirements**: In the base code you will find two components: shipments & futureShipments, which will show you the structure of each table that needs to be fed dynamically.
 
-In the project directory, you can run:
+1. Add a button with the label "Assign" in the shipments component to distribute the packages to the couriers complying with the minimum and maximum that each courier has. This action will be hit once a day.
+2. The courier with the maximum limit of shipments per day must be prioritized (first) when assigning the packages.
+3. If a package cannot be assigned because no courier meets the requirements to ship, the package must be added to a component table: futureShipments.
+4. In the shipments component table, you will find a "Complete" button, add an event to underline and paint green the row of the table where the button is located.
+5. In the shipments component table, you will find a "Delay" button, add an event to remove it from that courier and send it to the table that is in the futureShipments component.
 
-### `npm start`
+Each package can have 3 statuses:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Unassigned
+    This is the initial status.
+- On the way
+    This status will apply when the package is assigned to a courier.
+- Completed
+    This status will be applied when the shipment is "Completed".
+- Delayed
+    If a package is in the futureShipments table it must have this status.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Notes**:
+The number of packages and the distance of each package changes from day to day. The maximum number of packages that a delivery person can be assigned may change from one day to the next.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
