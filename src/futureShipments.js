@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-function FutureShipments({ futureShipments }) {
+function FutureShipments({ Packages }) {
+
+    const [packs, setPacks] = useState([]); // Each package
+
+    useEffect(() => {
+        
+        setPacks(Packages);
+
+        console.log(Packages);
+    }, [Packages]);
+
   return (
     <div>
         <h2>Tomorrow</h2>
@@ -12,10 +22,12 @@ function FutureShipments({ futureShipments }) {
                 </tr>
             </thead>
             <tbody>
+                {packs && packs.map(p => (
                 <tr class="yellow">
-                    <td>Package 2</td>
-                    <td align="center">DELAYED</td>
+                    <td>{p.name}</td>
+                    <td align="center">{p.status}</td>
                 </tr>
+                ))}
             </tbody>
         </table>
     </div>

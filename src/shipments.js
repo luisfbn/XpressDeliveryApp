@@ -1,6 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Status } from './App';
+import './app.css'
 
-function Shipments() {
+function Shipments({Couriers, OnCompleted, OnDelay, Refresh}) {
+
+    const [couriers, setCouriers] = useState([]); // in Courier group
+
+    useEffect(() => {
+        
+        setCouriers(null);
+
+        setCouriers(Couriers);
+    }, [Couriers, Refresh])
+
+
   return (
     <>
       <h2>Today</h2>
@@ -13,10 +26,12 @@ function Shipments() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Delivery Man Name</td>
-              <td align="center">1</td>
+            {couriers.map((courier) => (
+            <tr key={courier.id}>
+              <td>{courier.name}</td>
+              <td align="center">{courier.maxPackages}</td>
               <td>
+                {courier.packages.length > 0  && <>
                 <table width="100%">
                   <thead>
                     <tr>
@@ -26,18 +41,23 @@ function Shipments() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="yellow">
-                      <td>Package 1</td>
-                      <td align="center">ON THE WAY</td>
+                    {courier.packages.map(pack => (
+                    <tr key={courier.id + "-" + pack.id} className={pack.status === Status.Completed ? "green" : "yellow"}>
+
+                      <td>{pack.name}</td>
+                      <td align="center">{pack.status}</td>
                       <td align="center">
-                        <button>COMPLETE</button>
-                        <button>DELAY</button>
+                        <button onClick={() => OnCompleted(courier.id, pack.id)}>COMPLETE</button>
+                        <button onClick={() => OnDelay(courier.id, pack.id)}>DELAY</button>
                       </td>
                     </tr>
+                    ))}
                   </tbody>
                 </table>
+                </>}
               </td>
             </tr>
+            ))}
           </tbody>
         </table>
       </>

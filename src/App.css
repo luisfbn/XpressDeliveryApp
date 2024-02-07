@@ -1,6 +1,4 @@
 
-
-
 body {
   padding: 20px;
 }
@@ -20,14 +18,22 @@ table th {
 }
 
 table.main-table td {
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 10px;
 }
-
+/* 
 table.main-table tbody tr:nth-child(odd) td {
   background-color: #eee;
-}
+} 
 
 table.main-table tbody tr td table tbody tr td {
   background-color: #f8f8ca !important;
+} */
+
+.green > td  {
+  background-color: green;
+}
+
+.yellow > td { 
+  background-color: #f8f8ca;
 }
